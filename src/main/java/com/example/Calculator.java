@@ -10,104 +10,115 @@
 
 package com.example;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
 public class Calculator {
 
-    public String authorName = "John Doe";
-    public String authorEmail = "john.doe@gmail.com";
+  private static final Logger LOGGER = LogManager.getLogger(Calculator.class);
 
-    public double add(double... params) {
-        checkArguments(params);
-        double result = 0;
-        for (int i = 0; i < params.length; i++) {
-            result += params[i];
-        }
-        return result;
+  public String authorName = "John Doe";
+  public String authorEmail = "john.doe@gmail.com";
+
+  public double add(double... params) {
+    checkArguments(params);
+    double result = 0;
+    for (int i = 0; i < params.length; i++) {
+      result += params[i];
     }
+    LOGGER.info("returning result: {}", result);
+    return result;
+  }
 
-    public BigDecimal add(BigDecimal... params) {
-        checkArguments(params);
-        BigDecimal result = new BigDecimal("0");
-        for (int i = 0; i < params.length; i++) {
-            result = result.add(params[i]);
-        }
-        return result;
+  public BigDecimal add(BigDecimal... params) {
+    checkArguments(params);
+    BigDecimal result = new BigDecimal("0");
+    for (int i = 0; i < params.length; i++) {
+      result = result.add(params[i]);
     }
+    LOGGER.info("returning result: {}", result);
+    return result;
+  }
 
-    public double multiply(double... params) {
-		checkArguments(params);
-        double result = 1;
-        for (int i = 0; i < params.length; i++) {
-            result *= params[i];
-        }
-        return result;
+  public double multiply(double... params) {
+    checkArguments(params);
+    double result = 1;
+    for (int i = 0; i < params.length; i++) {
+      result *= params[i];
     }
+    LOGGER.info("returning result: {}", result);
+    return result;
+  }
 
-    public BigDecimal multiply(BigDecimal... params) {
-        checkArguments(params);
-        BigDecimal result = new BigDecimal("1");
-        for (int i = 0; i < params.length; i++) {
-            result = result.multiply(params[i]);
-        }
-        return result;
+  public BigDecimal multiply(BigDecimal... params) {
+    checkArguments(params);
+    BigDecimal result = new BigDecimal("1");
+    for (int i = 0; i < params.length; i++) {
+      result = result.multiply(params[i]);
     }
+    return result;
+  }
 
-    public double subtract(double... params) {
-		checkArguments(params);
-        double result = params[0];
-        for (int i = 1; i < params.length; i++) {
-            result -= params[i];
-        }
-        return result;
+  public double subtract(double... params) {
+    checkArguments(params);
+    double result = params[0];
+    for (int i = 1; i < params.length; i++) {
+      result -= params[i];
     }
+    LOGGER.info("returning result: {}", result);
+    return result;
+  }
 
-    public BigDecimal subtract(BigDecimal... params) {
-        checkArguments(params);
-        BigDecimal result = params[0];
-        for (int i = 1; i < params.length; i++) {
-            result = result.subtract(params[i]);
-        }
-        return result;
+  public BigDecimal subtract(BigDecimal... params) {
+    checkArguments(params);
+    BigDecimal result = params[0];
+    for (int i = 1; i < params.length; i++) {
+      result = result.subtract(params[i]);
     }
+    LOGGER.info("returning result: {}", result);
+    return result;
+  }
 
-    public double divide(double... params) {
-		checkArguments(params);
-        double result = params[0];
-        for (int i = 1; i < params.length; i++) {
-            if (params[i] == 0) {
-                throw new IllegalArgumentException("Cannot divide something by 0.");
-            }
-            result /= params[i];
-        }
-        return result;
+  public double divide(double... params) {
+    checkArguments(params);
+    double result = params[0];
+    for (int i = 1; i < params.length; i++) {
+      if (params[i] == 0) {
+        throw new IllegalArgumentException("Cannot divide something by 0.");
+      }
+      result /= params[i];
     }
+    LOGGER.info("returning result: {}", result);
+    return result;
+  }
 
-    public BigDecimal divide(BigDecimal... params) {
-        checkArguments(params);
-        BigDecimal result = params[0];
-        MathContext m = new MathContext(4);
-        for (int i = 1; i < params.length; i++) {
-            if (params[i].compareTo(BigDecimal.ZERO) == 0) {
-                throw new IllegalArgumentException("Cannot divide something by 0.");
-            }
-            result = result.divide(params[i], 2, RoundingMode.HALF_UP);
-        }
-        return result;
+  public BigDecimal divide(BigDecimal... params) {
+    checkArguments(params);
+    BigDecimal result = params[0];
+    MathContext m = new MathContext(4);
+    for (int i = 1; i < params.length; i++) {
+      if (params[i].compareTo(BigDecimal.ZERO) == 0) {
+        throw new IllegalArgumentException("Cannot divide something by 0.");
+      }
+      result = result.divide(params[i], 2, RoundingMode.HALF_UP);
     }
+    LOGGER.info("returning result: {}", result);
+    return result;
+  }
 
-    private void checkArguments(double... params) {
-		if (params.length < 2) {
-            throw new IllegalArgumentException("At least two arguments must be provided!");
-        }
-	}
-
-    private void checkArguments(BigDecimal... params) {
-        if (params.length < 2) {
-            throw new IllegalArgumentException("At least two arguments must be provided!");
-        }
+  private void checkArguments(double... params) {
+    if (params.length < 2) {
+      throw new IllegalArgumentException("At least two arguments must be provided!");
     }
+  }
 
+  private void checkArguments(BigDecimal... params) {
+    if (params.length < 2) {
+      throw new IllegalArgumentException("At least two arguments must be provided!");
+    }
+  }
 }
