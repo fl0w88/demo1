@@ -88,7 +88,7 @@ public class Calculator {
     double result = params[0];
     for (int i = 1; i < params.length; i++) {
       if (params[i] == 0) {
-        throw new IllegalArgumentException("Cannot divide something by 0.");
+        // throw new IllegalArgumentException("Cannot divide something by 0.");
       }
       result /= params[i];
     }

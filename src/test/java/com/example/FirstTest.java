@@ -29,8 +29,8 @@ public class FirstTest {
 
     @Test
     @DisplayName("My 1st JUnit 5 test! 😎 - Calculator - Addition Test")
-    void additionTest() {
-        Assertions.assertEquals(8, myCalculator.add(3, 5));
+    public void additionTest() {
+        Assertions.assertEquals(5, myCalculator.add(5));
     }
 
 }

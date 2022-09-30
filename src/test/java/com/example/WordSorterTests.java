@@ -25,7 +25,7 @@ public class WordSorterTests {
     }
 
     @Test
-    void testOrder() {
+    public void testOrder() {
 	}
 
 }
