@@ -15,7 +15,7 @@ import org.junit.jupiter.api.*;
 
 @Tag("development")
 @Tag("stable")
-public class FirstTest {
+public class CalculatorTest {
 
     // we define a variable ( or an object) of the type Calculator
     private Calculator myCalculator;

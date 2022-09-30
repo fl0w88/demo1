@@ -12,17 +12,7 @@ package com.example;
 
 import org.junit.jupiter.api.*;
 
-import java.util.Arrays;
-import java.util.List;
-
-public class WordSorterTests {
-
-    private List<String> wordsToSort;
-
-    @BeforeEach
-    public void initList() {
-        wordsToSort = Arrays.asList("", "", "", "", "");
-    }
+public class WordSorterTest {
 
     @Test
     public void testOrder() {
